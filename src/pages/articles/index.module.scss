@@ -1,0 +1,27 @@
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 290px 290px;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 80vw;
+  }
+}
+
+
+.tagContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+}
+
+.tag {
+  font-size: 0.8rem;
+  background-color: rgba(128, 128, 128, 0.242);
+  border-radius: 0.2rem;
+  padding: 2px 4px 1px 4px;
+  height: 1.2rem;
+}

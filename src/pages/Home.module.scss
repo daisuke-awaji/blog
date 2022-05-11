@@ -1,0 +1,18 @@
+// .profileTop {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   height: 30vh;
+// }
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 290px 290px;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 80vw;
+  }
+}
+
