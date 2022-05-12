@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
 
 type Post = {
@@ -68,6 +69,6 @@ export function getAllPosts(fields: string[] = []) {
  * @returns HTML
  */
 export const markdownToHtml = async (markdown: string) => {
-  const result = await remark().use(html).process(markdown);
+  const result = await remark().use(html).use(remarkGfm).process(markdown);
   return result.toString();
 };
