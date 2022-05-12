@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/layout/Layout';
-import styles from './index.module.scss';
+import styles from './articles.module.scss';
 import React from 'react';
 import { LinkCard } from '../../components/Card/LinkCard';
 
@@ -25,6 +25,11 @@ const articles = [
     title: 'AWS Amplify での Cognito アクセスは React Context.Provider を使って認証処理を Hooks 化しよう',
     url: 'https://qiita.com/G-awa/items/99cb84c62fcd113943a6',
     tags: ['Cognito', 'Amplify'],
+  },
+  {
+    title: 'GraphQL Mesh は何を解決するのか？ ~ Qiita API を GraphQL でラップして理解する GraphQL Mesh ~',
+    url: '/articles/123456789',
+    tags: ['ooo', 'ppp'],
   },
 ];
 

@@ -1,21 +1,54 @@
-.container {
+@import '../../styles/variables.scss';
+
+
+.root {
+  background: linear-gradient(
+    209deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(224, 176, 207, 1) 16%,
+    rgba(214, 178, 211, 1) 27%,
+    rgba(205, 179, 214, 1) 37%,
+    rgba(192, 181, 218, 1) 51%,
+    rgba(184, 182, 221, 1) 60%,
+    rgba(200, 167, 227, 0.7267955894823428) 79%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerContainer {
   padding: 0 2rem;
   max-width: 1200px;
-  margin: auto;
+  width: 100%;
 
-  @media screen and (max-width: 600px) {
-      padding: 0 1rem 0 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mq('sm') {
+    padding: 0 1rem 0 1rem;
   }
 }
 
 
 .main {
+  padding: 0 2rem;
+  max-width: 1200px;
   min-height: 100vh;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
+
+  @include mq('sm') {
+    padding: 0 1rem 0 1rem;
+  }
 }
 
 .footer {

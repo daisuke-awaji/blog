@@ -1,4 +1,4 @@
-// customer banner
+// generated with typed-scss-modules
 export type Styles = {
   'card': string;
 };

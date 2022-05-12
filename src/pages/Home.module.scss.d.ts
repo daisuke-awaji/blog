@@ -1,5 +1,6 @@
-// customer banner
+// generated with typed-scss-modules
 export type Styles = {
+  'centeredCard': string;
   'grid': string;
 };
 

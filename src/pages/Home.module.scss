@@ -1,18 +1,13 @@
-// .profileTop {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   height: 30vh;
-// }
+@import '../styles/variables.scss';
 
 .grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 290px 290px;
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 80vw;
-  }
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
+.centeredCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

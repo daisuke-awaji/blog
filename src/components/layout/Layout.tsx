@@ -7,17 +7,23 @@ const GITHUB_URL = 'https://github.com/daisuke-awaji';
 
 const Layout: React.FC<{ children: any }> = ({ children }) => {
   return (
-    <div>
-      <div className={styles.container}>
-        <header>
-          <h1>{WEB_SITE_NAME}</h1>
-        </header>
+    <div className={styles.root}>
+      <header className={styles.header}>
+        <div className={styles.headerContainer}>
+          <Link href="/">
+            <a>
+              <h1>{WEB_SITE_NAME}</h1>
+            </a>
+          </Link>
+          <h2>⚡️</h2>
+        </div>
+      </header>
 
-        <main className={styles.main}>{children}</main>
-      </div>
+      <main className={styles.main}>{children}</main>
+
       <footer className={styles.footer}>
         <Link href={GITHUB_URL}>
-          <a>daisuke-awaji</a>
+          <a>@daisuke-awaji</a>
         </Link>
       </footer>
     </div>
