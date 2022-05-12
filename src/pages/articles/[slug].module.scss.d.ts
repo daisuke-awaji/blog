@@ -1,9 +1,6 @@
 // generated with typed-scss-modules
 export type Styles = {
-  'date': string;
-  'grid': string;
-  'tag': string;
-  'tagContainer': string;
+  'content': string;
 };
 
 export type TheClasses = keyof Styles;

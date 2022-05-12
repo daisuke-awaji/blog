@@ -1,9 +1,10 @@
-import type { NextPage } from 'next';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/layout/Layout';
 import styles from './articles.module.scss';
 import React from 'react';
 import { LinkCard } from '../../components/Card/LinkCard';
+import { getAllPosts } from '../../lib/md';
 
 const articles = [
   {
@@ -26,18 +27,34 @@ const articles = [
     url: 'https://qiita.com/G-awa/items/99cb84c62fcd113943a6',
     tags: ['Cognito', 'Amplify'],
   },
-  {
-    title: 'GraphQL Mesh は何を解決するのか？ ~ Qiita API を GraphQL でラップして理解する GraphQL Mesh ~',
-    url: '/articles/123456789',
-    tags: ['ooo', 'ppp'],
-  },
 ];
-
 const Tag: React.FC<{ tag: string }> = ({ tag }) => {
-  return <span className={styles.tag}>{tag}</span>;
+  return <div className={styles.tag}>{tag}</div>;
 };
 
-const Blog: NextPage = () => {
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts(['slug', 'title', 'date', 'tags']);
+  return {
+    props: { allPosts },
+  };
+};
+
+const ArticleCard: React.FC<{ post: Props['allPosts'][0] }> = ({ post }) => {
+  return (
+    <LinkCard href={'/articles/' + post.slug} key={post.slug}>
+      <div>{post.title}</div>
+      <div className={styles.tagContainer}>
+        {post.tags.map((tag, i) => (
+          <Tag key={i} tag={tag} />
+        ))}
+      </div>
+      <div className={styles.date}>{post.date}</div>
+    </LinkCard>
+  );
+};
+
+const Blog: NextPage<Props> = ({ allPosts }) => {
   return (
     <Layout>
       <Head>
@@ -57,6 +74,10 @@ const Blog: NextPage = () => {
               ))}
             </div>
           </LinkCard>
+        ))}
+
+        {allPosts.map((post) => (
+          <ArticleCard post={post} key={post.title} />
         ))}
       </div>
     </Layout>
