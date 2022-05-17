@@ -45,45 +45,46 @@ type Res = {
 };
 
 export const getAllPosts = async () => {
-  //   const url = 'https://qiita.com/api/v2/items?page=1&per_page=100&query=qiita user:G-awa';
-  //   const res = await fetch(url);
-  //   const data = await res.json();
+  const url = 'https://qiita.com/api/v2/items?page=1&per_page=100&query=user:G-awa';
+  const res = await fetch(url);
+  const data = await res.json();
 
-  //   return data.map((post: Res) => ({
-  //     title: post.title,
-  //     url: post.url,
-  //     tags: post.tags.map((tag) => tag.name),
-  //     date: post.created_at,
-  //   }));
+  return data.map((post: Res) => ({
+    title: post.title,
+    url: post.url,
+    tags: post.tags.map((tag) => tag.name),
+    label: 'qiita',
+    date: post.created_at,
+  }));
 
-  return [
-    {
-      title: 'Webサイトを設定ゼロで爆速デプロイする Serverless Component を公開しました⚡️',
-      url: 'https://qiita.com/G-awa/items/d972cd4383676815c78d',
-      tags: ['Serverless', 'React', 'CloudFront'],
-      label: 'qiita',
-      date: '2020-07-01',
-    },
-    {
-      title: 'Chaos Engineering on Frontend ~フロントエンドにカオス性を注入して信頼性を向上させよう~',
-      url: 'https://qiita.com/G-awa/items/9dc13c2db99cc85705bf',
-      tags: ['Chaos', 'Frontend'],
-      label: 'qiita',
-      date: '2020-07-01',
-    },
-    {
-      title: 'Effective AppSync 〜 Serverless Framework を使用した AppSync の実践的な開発方法とテスト戦略 〜',
-      url: 'https://qiita.com/G-awa/items/095faa9a94da09bc3ed5',
-      tags: ['AppSync', 'Serverless'],
-      label: 'qiita',
-      date: '2020-07-01',
-    },
-    {
-      title: 'AWS Amplify での Cognito アクセスは React Context.Provider を使って認証処理を Hooks 化しよう',
-      url: 'https://qiita.com/G-awa/items/99cb84c62fcd113943a6',
-      tags: ['Cognito', 'Amplify'],
-      label: 'qiita',
-      date: '2020-07-01',
-    },
-  ];
+  //   return [
+  //     {
+  //       title: 'Webサイトを設定ゼロで爆速デプロイする Serverless Component を公開しました⚡️',
+  //       url: 'https://qiita.com/G-awa/items/d972cd4383676815c78d',
+  //       tags: ['Serverless', 'React', 'CloudFront'],
+  //       label: 'qiita',
+  //       date: '2020-07-01',
+  //     },
+  //     {
+  //       title: 'Chaos Engineering on Frontend ~フロントエンドにカオス性を注入して信頼性を向上させよう~',
+  //       url: 'https://qiita.com/G-awa/items/9dc13c2db99cc85705bf',
+  //       tags: ['Chaos', 'Frontend'],
+  //       label: 'qiita',
+  //       date: '2020-07-01',
+  //     },
+  //     {
+  //       title: 'Effective AppSync 〜 Serverless Framework を使用した AppSync の実践的な開発方法とテスト戦略 〜',
+  //       url: 'https://qiita.com/G-awa/items/095faa9a94da09bc3ed5',
+  //       tags: ['AppSync', 'Serverless'],
+  //       label: 'qiita',
+  //       date: '2020-07-01',
+  //     },
+  //     {
+  //       title: 'AWS Amplify での Cognito アクセスは React Context.Provider を使って認証処理を Hooks 化しよう',
+  //       url: 'https://qiita.com/G-awa/items/99cb84c62fcd113943a6',
+  //       tags: ['Cognito', 'Amplify'],
+  //       label: 'qiita',
+  //       date: '2020-07-01',
+  //     },
+  //   ];
 };
