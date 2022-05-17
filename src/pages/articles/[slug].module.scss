@@ -12,13 +12,12 @@
 
   p, h1, h2, h3, h4, h5, h6, li, td {
     color: rgb(27, 27, 27);
-  }
-
-
-  code {
-    background-color: rgb(16, 15, 15);
-    padding: 0.1rem 0.3rem;
-    border-radius: 0.2rem;
+    code {
+      background-color: var(--color-primary-dark);
+      border-radius: 0.2rem;
+      padding: 0 0.3rem 0 0.3rem;
+      color: white;
+    }
   }
 
   img {
@@ -27,11 +26,14 @@
   }
 
   pre {
-    background-color: rgb(16, 15, 15);
+    background-color: var(--color-primary-dark);
     border-radius: 0.5rem;
     padding: 0.5rem;
-
     overflow: auto;
+
+    code {
+      color: white;
+    }
   }
 
   overflow: scroll;
@@ -49,7 +51,7 @@
   th {
     text-align: center;
     border: 1px solid var(--color-primary-dark);
-    background-color: var(--color-primary-dark);
+    background-color: var(--color-primary-light);
     padding: 0.5rem 1rem 0.5rem 1rem;
   }
   td {

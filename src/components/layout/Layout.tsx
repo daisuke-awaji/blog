@@ -7,7 +7,8 @@ const GITHUB_URL = 'https://github.com/daisuke-awaji';
 
 const Layout: React.FC<{ children: any }> = ({ children }) => {
   return (
-    <div className={styles.root}>
+    <div>
+      <meta name="theme-color" content="white" />
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <Link href="/">

@@ -1,20 +1,29 @@
+.cardContainer {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
 .card {
-    background: transparent;
-    padding: 1rem;
-    min-height: 100px;
-    width: 100%;
+  background: transparent;
+  padding: 1.2rem;
+  min-height: 100px;
+  width: 100%;
 
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.10 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
 
-    transition: 100ms ease-in;
+  transition: 100ms ease-in;
 
-    &:hover {
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
-        cursor: pointer;
-    }
+  &:hover {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    cursor: pointer;
   }
-
+}

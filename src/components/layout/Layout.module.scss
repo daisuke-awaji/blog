@@ -1,25 +1,5 @@
 @import '../../styles/variables.scss';
 
-.root {
-  // background: linear-gradient(
-  //   209deg,
-  //   rgba(238, 174, 202, 1) 0%,
-  //   rgba(224, 176, 207, 1) 16%,
-  //   rgba(214, 178, 211, 1) 27%,
-  //   rgba(205, 179, 214, 1) 37%,
-  //   rgba(192, 181, 218, 1) 51%,
-  //   rgba(184, 182, 221, 1) 60%,
-  //   rgba(200, 167, 227, 0.7267955894823428) 79%,
-  //   rgba(148, 187, 233, 1) 100%
-  // );
-
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(97, 186, 255, 1) 0%,
-    rgba(166, 239, 253, 1) 90.1%
-  );
-}
-
 .header {
   width: 100%;
 
@@ -40,7 +20,7 @@
   justify-content: space-between;
 
   @include mq('sm') {
-    padding: 0 0.7rem 0 0.7rem;
+    padding: 0 1.0rem 0 1.0rem;
   }
 }
 
@@ -51,7 +31,7 @@
   margin: auto;
 
   @include mq('sm') {
-    padding: 0 0.7rem 0 0.7rem;
+    padding: 0 1.0rem 0 1.0rem;
   }
 }
 

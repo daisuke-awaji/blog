@@ -1,5 +1,16 @@
 import styles from './GlassCard.module.scss';
 
-export const Card: React.FC<{ children: any; className?: string }> = ({ children, className }) => {
-  return <div className={styles.card + ' ' + className}>{children}</div>;
+export type CardProps = {
+  children: any;
+  className?: string;
+  label?: JSX.Element;
+};
+
+export const Card: React.FC<CardProps> = ({ children, className, label }) => {
+  return (
+    <div className={styles.cardContainer}>
+      {label && <div className={styles.label}>{label}</div>}
+      <div className={styles.card + ' ' + className}>{children}</div>
+    </div>
+  );
 };

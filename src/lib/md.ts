@@ -26,7 +26,7 @@ export function getPostSlugs() {
 /**
  * 指定したフィールド名から、記事のフィールドの値を取得する
  */
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
   const fullPath = path.join(postsDirectory, slug, 'index.md');
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
@@ -57,7 +57,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
  * すべての記事について、指定したフィールドの値を取得して返す
  * @param fields 取得するフィールド
  */
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts<T extends keyof Post>(fields: Array<T> = []): Pick<Post, T>[] {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => getPostBySlug(slug, fields)).sort((a, b) => (a.date > b.date ? -1 : 1));
   return posts;
