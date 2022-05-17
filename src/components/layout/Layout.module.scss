@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.root {
+  background-color: white;
+}
+
 .header {
   width: 100%;
 
@@ -20,7 +24,7 @@
   justify-content: space-between;
 
   @include mq('sm') {
-    padding: 0 1.0rem 0 1.0rem;
+    padding: 0 1.0rem
   }
 }
 
@@ -31,7 +35,7 @@
   margin: auto;
 
   @include mq('sm') {
-    padding: 0 1.0rem 0 1.0rem;
+    padding: 0 1.0rem;
   }
 }
 

@@ -1,5 +1,7 @@
 .cardContainer {
   position: relative;
+  width: 100%;
+  min-height: 100px;
 }
 
 .label {
@@ -11,8 +13,6 @@
 .card {
   background: transparent;
   padding: 1.2rem;
-  min-height: 100px;
-  width: 100%;
 
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);

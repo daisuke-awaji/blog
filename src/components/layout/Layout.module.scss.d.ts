@@ -4,6 +4,7 @@ export type Styles = {
   'header': string;
   'headerContainer': string;
   'main': string;
+  'root': string;
 };
 
 export type TheClasses = keyof Styles;

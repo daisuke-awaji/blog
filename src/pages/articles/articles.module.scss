@@ -14,10 +14,8 @@
 .tagContainer {
   margin-top: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   gap: 3px;
+  flex-wrap: wrap;
 }
 
 .tag {
