@@ -3,7 +3,6 @@
 .titleContainer {
   // background-color: var(--color-primary);
   // border-radius: 0.5rem;
-  padding: 1rem;
   font-size: medium;
 
   p {
@@ -21,8 +20,12 @@
   -webkit-backdrop-filter: blur(4px);
 
   a {
-    color: blue;
-    border-bottom: solid 1px blue;
+    color: #0f83fd;
+
+    &:hover {
+      border-bottom: solid 1px #0f82fd67;
+      opacity: 0.7;
+    }
   }
 
   h1,

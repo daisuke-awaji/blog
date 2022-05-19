@@ -8,6 +8,10 @@ tags:
 
 ![appsync](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/4211b642-0999-a38d-7b99-38b000ab69ee.gif)
 
+### 目次
+
+# AppSync とは
+
 AppSync は AWS が提供するマネージド GraphQL サービスです。Amplify と統合することにより、スキーマさえ宣言すれば GraphQL の Query, Mutation, Subscription コードを自動生成します。バックエンド GraphQL エンドポイントやデータソースを構築し、即座に動く環境が手に入ります。
 
 [こちら](https://qiita.com/G-awa/items/a5b2cc7017b1eceeb002) は過去の記事ですが、リアルタイム掲示板アプリの主要機能を 15 分で作った例を紹介しています。
@@ -26,19 +30,17 @@ $ serverless create \
   --path myService
 ```
 
-## AppSync とは
+## なぜ GraphQL が求められるのか
 
 AppSync は AWS が提供するマネージド GraphQL サービスです。AWS の各種バックエンド（DynamoDB, Aurora, Elasticsearch, Lambda など）とシームレスに結合ができ、すばやく API バックエンドを構築できます。また、Subscription という機能により、複数クライアントが同時編集できる Web アプリケーションや、リアルタイムなチャットアプリを簡単に実現できます。
 
 ![仕組み](https://d1.awsstatic.com/AppSync/product-page-diagram_AppSync@2x.d46d96d1e27169aa5005223299068da899280538.png)
 
-### なぜ GraphQL が求められるのか
-
 ![spa.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/5868cfdf-7e58-5b54-eb49-a668ca2010d5.png)
 
 バックエンドに REST API、フロントエンドに React（または Vue.js や Angular）といった構成は一般的でしょう。バックエンドとフロントエンドは Rest の API 定義を互いに共有し、開発を進めます。有名なツールとして [OpenAPI](https://github.com/OAI/OpenAPI-Specification) があります。OpenAPI による定義を介することで、私たちは以下のような恩恵を得ることができました。
 
-#### OpenAPI による恩恵
+### OpenAPI による恩恵
 
 - API 定義を YAML 形式のファイルで管理する
 - HTML 形式の API ドキュメントを自動生成する
@@ -53,7 +55,7 @@ AppSync は AWS が提供するマネージド GraphQL サービスです。AWS 
 
 <a href=""><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/OpenAPITools/openapi-generator.png" width="460px"></a>
 
-#### REST API 開発の課題
+### REST API 開発の課題
 
 OpenAPI とそのエコシステムの登場によって、REST API 開発は随分と楽になりましたが、依然として課題は残り続けるものです。REST API 開発における課題には以下のようなものが挙げられます。
 
@@ -63,7 +65,7 @@ OpenAPI とそのエコシステムの登場によって、REST API 開発は随
 
 REST という思想は素晴らしいですが、リソースベースにアプリケーションを作成していくとどうしてもこのような課題が発生します。フロントエンドは必要なデータを必要なだけ１クエリで取得したい。バックエンドは必要なデータを素早く漏れなく提供したいのです。
 
-#### GraphQL が解決すること
+### GraphQL が解決すること
 
 <img width="50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png" />
 
@@ -84,7 +86,7 @@ GraphQL を使用することでフロントエンドは必要なデータを必
 
 REST の場合、ユーザ１件取得の API（/uesrs/:userId）と友達一覧取得の API（/users/:userId/friends）の２つを呼び出しています。レスポンスには画面に表示する必要のない不必要なフィールドも含まれるのでしょう。一方で GraphQL の場合は必要なフィールドをネスト構造で指定し、１リクエストで画面表示に必要な情報を取得しています。
 
-### AppSync の役割
+## AppSync の役割
 
 <img width="50%" src="https://media.graphcms.com/jN6lJfSgCNnGe6H5QGgS">
 
@@ -163,7 +165,7 @@ AWS AppSync のリゾルバーは、Apache Velocity Template Language (VTL) で�
 
 本記事では、AppSync をローカルでテストする方法を紹介するために、**Serverless Framework** を使用した開発方法をガイドします。
 
-## Serverless Framework for Appsync
+# Serverless Framework for Appsync
 
 ![serverlessappsync.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/4211b642-0999-a38d-7b99-38b000ab69ee.gif)
 
@@ -177,7 +179,7 @@ Serverless Framework を使用して AppSync を構築するためには以下�
 
 本記事では Serverless AppSync Plugin の方法を説明します。基本的な Serverless Framework の使用方法は割愛します。公式のドキュメントか、[堀家](https://qiita.com/horike37) さんの記事「[Serverless Framework の使い方まとめ](https://qiita.com/horike37/items/b295a91908fcfd4033a2)」がとてもわかりやすく説明されていますので。そちらをご参照ください。
 
-### Serverless AppSync Plugin
+## Serverless AppSync Plugin
 
 Serverless AppSync Plugin を使用して、DynamoDB と Lambda をデータソースとした AppSync を作成していきます。Serverless AppSync Plugin はその他に、Elasticsearch や HTTP データソースもサポートしています。
 
@@ -191,7 +193,7 @@ Serverless AppSync Plugin を使用して、DynamoDB と Lambda をデータソ�
 
 ![a](https://user-images.githubusercontent.com/20736455/90215011-5772dd80-de35-11ea-8be8-06196c5e3b19.gif)
 
-#### Serverless プロジェクトを開始する
+### Serverless プロジェクトを開始する
 
 まずは Serverless Framework の AWS/TypeScript ボイラーテンプレートからプロジェクトのひな形を作ります。
 
@@ -202,7 +204,7 @@ $ serverless create --template aws-nodejs-typescript
 lulzneko さんの「[Serverless Framework と TypeScript でサーバレス開発事始め
 ](https://riotz.works/articles/lulzneko/2018/02/01/beginning-serverless-dev-with-serverless-framework-and-typescript/)」という記事でとても分かりやすく説明されています。
 
-#### Serverless AppSync Plugin のインストール
+### Serverless AppSync Plugin のインストール
 
 プラグインを yarn インストールします。
 
@@ -216,7 +218,7 @@ npm を使用しても良いですが、yarn が推奨されています。
 $ npm install serverless-appsync-plugin
 ```
 
-#### プラグインの設定
+### プラグインの設定
 
 serverless.yml にプラグインを追加します。
 
@@ -557,7 +559,7 @@ $util.toJson($ctx.result)
   </div>
 </details>
 
-#### デプロイ
+### デプロイ
 
 あとはいつも通り、`serverless deploy` コマンドでリソースを構築します。
 
@@ -565,11 +567,11 @@ $util.toJson($ctx.result)
 $ serverless deploy
 ```
 
-## AppSync をテストする
+# AppSync をテストする
 
 Serverless Framework を使用して AppSync をデプロイできました。次はテストです。もちろん、AWS 上にデプロイした AppSync に対して Query を実行したり、Mutation を実行してデータを登録しても良いでしょう。ただしその場合、チーム開発は非常に難しくなります。データを共有しなければいけなくなりますし、そもそもユニットテストのようなものは書けません。Web 開発において私たちはこの課題をどう解決するかを知っています。**ローカルで AppSync, DynamoDB, Lambda を起動し、データを登録し、API を実行してデータを取得** できる環境を用意すれば良いのです。
 
-### Serverless AppSync Simulator
+## Serverless AppSync Simulator
 
 Amplify CLI はローカルで AppSync を起動するシミュレータを提供しています。
 
@@ -586,7 +588,7 @@ $ amplify mock api
 
 <a href="https://github.com/bboure/serverless-appsync-simulator"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/bboure/serverless-appsync-simulator.png" width="460px"></a>
 
-#### 使用方法
+### 使用方法
 
 DynamoDB リゾルバーを使用する場合、DynamoDB をローカルで立ち上げるので、`serverless-dynamodb-local` プラグインも必要になります。
 serverless.yml には以下のように記述しましょう。
@@ -627,7 +629,7 @@ Serverless: GraphiQl: http://localhost:20002
 
 ![grapiqllocalhost.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/18c7e38e-7935-41ca-2015-82832a2150b6.gif)
 
-### GraphQL リクエストをテストする
+## GraphQL リクエストをテストする
 
 ローカルで AppSync のシミュレータを起動できたので、テストを記述していきます。テストのアプローチの方法は至極単純です。
 
@@ -637,13 +639,13 @@ Serverless: GraphiQl: http://localhost:20002
 
 を確認します。
 
-#### GraphQL リクエストのテスト領域
+### GraphQL リクエストのテスト領域
 
 テストの対象を図示すると以下のようになります。GrqphQL のリクエストとレスポンスをテストします。これはインテグレーションテストに相当します。
 
 ![openapi-インテグレーションテスト.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/4be667af-08fe-57ee-a151-71e6c2847730.png)
 
-#### DynamoDB Local の seed データ
+### DynamoDB Local の seed データ
 
 [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local) には seed データを作成する機能があります。この機能を利用してもいいですね。
 
@@ -688,7 +690,7 @@ custom:
 ]
 ```
 
-#### Jest を使用してテストを行う
+### Jest を使用してテストを行う
 
 Jest を使用してテストを記述します。Cognito UserPool を使用している場合、リクエスト時に Authorization ヘッダーが必要です。ローカルで動かす際には形式さえ合っていればなんでも良いようです。API キーを必要としている場合は `x-api-key` というヘッダーを指定する必要があります。
 
@@ -774,12 +776,12 @@ export const getTask = gql`
 `;
 ```
 
-### VTL をテストする
+## VTL をテストする
 
 AppSync は各リゾルバーにリクエスト処理を流す際に VTL(Velocity Template Language) を使用してクライアントからの GraphQL リクエストを、データソースへのリクエストに変換します。
 認可処理（Cognito の UserGroup が Admin だったら実行できるようにするなど）、入力パラメータのバリデーション、パラメータの変換処理（大文字にするなど）など様々なビジネスロジックを VTL に記述することになります。この VTL ファイルが AppSync のサーバサイドの機能（関数）という位置付けになります。
 
-#### VTL テストの領域
+### VTL テストの領域
 
 **GraphQL リクエストをテストする**方法はインテグレーションテストのレイヤーでした。クライアントからのリクエストとレスポンスを検証するため、複雑な VTL を記述した場合、テストの網羅性を担保することが難しくなります。
 
@@ -788,7 +790,7 @@ AppSync は各リゾルバーにリクエスト処理を流す際に VTL(Velocit
 
 ![openapi-ユニットテスト.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/7c2a0dea-1583-d8c1-1c29-df2899954858.png)
 
-#### VTL のテストのためにヘルパー関数を作成する
+### VTL のテストのためにヘルパー関数を作成する
 
 VTL によって生成されるリゾルバーリクエストを検証するために、以下のようなヘルパー関数を用意しておきます。`amplify-velocity-template` 本体が提供している `Compile` などを使用します。
 
@@ -829,7 +831,7 @@ const vtlLoader = (filePath: string, args: any) => {
 };
 ```
 
-#### VTL テストを実行する
+### VTL テストを実行する
 
 まずはシンプルな `getTask.request.vtl` というファイルをテストする方法を考えます。このファイルは入力値を元に DynamoDB に対して `id` と `status` という一意なキー検索を行うリクエストを発行します（id はプライマリーキー、status はソートキー）
 
@@ -1074,7 +1076,7 @@ AppSync マネジメントコンソール画面
 
 複数環境にデプロイできています。実際のユースケースでは、本番環境だけ AWS 環境を分離しておくという方法を採用するかもしれません。その場合は [@kudedasumn](https://qiita.com/kuedasmn)さんの「[CircleCI で複数の AWS アカウントを扱う方法](https://qiita.com/kuedasmn/items/cac2c0bd2f5092bb033f)」という記事が大変参考になります。
 
-## まとめ
+# まとめ
 
 AppSync をローカルで開発し、テストする。また、CircleCI 上でテストを行い、複数の環境にデプロイする方法を説明しました。AppSync をはじめとし、GraphQL はモバイルや IoT など、すべてのデバイスがインターネットに接続し、相互作用する現代のアプリケーションにおいて必須ともいえる技術要素です。これからも GraphQL 関連のエコシステムは継続的にウォッチし、コミットしていきたいですね。
 

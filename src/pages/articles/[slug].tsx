@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
+import Head from 'next/head';
 import Layout from '../../components/layout/Layout';
 import { getAllPosts, getPostBySlug, markdownToHtml } from '../../lib/md';
 import styles from './[slug].module.scss';
@@ -43,10 +44,15 @@ export const getStaticProps = async ({ params }: any) => {
 const Blog: NextPage<Props> = ({ post }) => {
   return (
     <Layout>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.title} />
+      </Head>
       <div className={styles.titleContainer}>
         <h1>{post.title}</h1>
         <p>{post.date}</p>
       </div>
+
       <div className={styles.content}>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>

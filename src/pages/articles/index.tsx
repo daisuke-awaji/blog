@@ -55,8 +55,8 @@ const Blog: NextPage<Props> = ({ allPosts }) => {
   return (
     <Layout>
       <Head>
-        <title>G&apos;s | Blog</title>
-        <meta name="description" content="Blog" />
+        <title>G&apos;s | Articles</title>
+        <meta name="description" content="Articles" />
       </Head>
 
       <h1>Articles</h1>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEmojiFavicon } from '../../hooks';
 import styles from './Layout.module.scss';
 
 const WEB_SITE_NAME = "G's";
@@ -6,6 +7,8 @@ const WEB_SITE_NAME = "G's";
 const GITHUB_URL = 'https://github.com/daisuke-awaji';
 
 const Layout: React.FC<{ children: any }> = ({ children }) => {
+  useEmojiFavicon('⚡️');
+
   return (
     <div className={styles.root}>
       <meta name="theme-color" content="white" />

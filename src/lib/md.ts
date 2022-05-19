@@ -4,31 +4,34 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
+import remarkToc from 'remark-toc';
+import remarkSlug from 'remark-slug';
 
 type Post = {
   slug: string;
   content: string;
   title: string;
-  subTitle: string;
   date: string;
   tags: string[];
 };
 
-const postsDirectory = path.join(process.cwd(), 'src/content');
+const dir = path.join(process.cwd(), 'contents');
 
 /**
  * postsDirectory 以下のディレクトリ名を取得する
  */
 export function getPostSlugs() {
-  const allDirents = fs.readdirSync(postsDirectory, { withFileTypes: true });
-  return allDirents.filter((dirent) => dirent.isDirectory()).map(({ name }) => name);
+  return fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map(({ name }) => name);
 }
 
 /**
  * 指定したフィールド名から、記事のフィールドの値を取得する
  */
 export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
-  const fullPath = path.join(postsDirectory, slug, 'index.md');
+  const fullPath = path.join(dir, slug, 'index.md');
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
@@ -36,7 +39,6 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     slug: '',
     content: '',
     title: '',
-    subTitle: '',
     date: '',
     tags: [],
   };
@@ -48,7 +50,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     if (field === 'content') {
       items[field] = content;
     }
-    if (field === 'title' || field === 'date' || field === 'tags' || field === 'subTitle') {
+    if (field === 'title' || field === 'date' || field === 'tags') {
       items[field] = data[field];
     }
   });
@@ -71,6 +73,11 @@ export function getAllPosts<T extends keyof Post>(fields: Array<T> = []): Pick<P
  * @returns HTML
  */
 export const markdownToHtml = async (markdown: string) => {
-  const result = await remark().use(html).use(remarkGfm).process(markdown);
-  return result.toString();
+  const result = await remark()
+    .use(html)
+    .use(remarkGfm)
+    .use(remarkSlug)
+    .use(remarkToc, { heading: '目次', tight: true, prefix: 'user-content-', maxDepth: 2 })
+    .process(markdown);
+  return result.value.toString();
 };
