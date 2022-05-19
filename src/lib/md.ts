@@ -9,6 +9,7 @@ type Post = {
   slug: string;
   content: string;
   title: string;
+  subTitle: string;
   date: string;
   tags: string[];
 };
@@ -35,6 +36,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     slug: '',
     content: '',
     title: '',
+    subTitle: '',
     date: '',
     tags: [],
   };
@@ -46,7 +48,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     if (field === 'content') {
       items[field] = content;
     }
-    if (field === 'title' || field === 'date' || field === 'tags') {
+    if (field === 'title' || field === 'date' || field === 'tags' || field === 'subTitle') {
       items[field] = data[field];
     }
   });

@@ -1,23 +1,61 @@
 @import '../../styles/variables.scss';
 
+.titleContainer {
+  // background-color: var(--color-primary);
+  // border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: medium;
+
+  p {
+    color: var(--color-primary-dark);
+  }
+}
 
 .content {
   padding: 1rem;
   border-radius: 0.5rem;
 
-  background: rgba( 255, 255, 255, 0.15 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
-  p, h1, h2, h3, h4, h5, h6, li, td {
-    color: rgb(27, 27, 27);
+  a {
+    color: blue;
+    border-bottom: solid 1px blue;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 400;
+
+    overflow-wrap: break-word;
+	  word-break: keep-all;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  td {
+    color: var(--color-primary-dark);
     code {
       background-color: var(--color-primary-dark);
       border-radius: 0.2rem;
-      padding: 0 0.3rem 0 0.3rem;
+      padding: 0.3rem 0.3rem 0.1rem 0.3rem;
       color: white;
     }
+    line-height: 1.8rem;
   }
 
   img {
@@ -30,10 +68,22 @@
     border-radius: 0.5rem;
     padding: 0.5rem;
     overflow: auto;
+    line-height: 1.3rem;
+    font-size: medium;
 
     code {
       color: white;
     }
+  }
+
+  blockquote {
+    padding: 7px 16px;
+    box-sizing: border-box;
+    font-style: italic;
+    color: var(--color-primary-dark);
+    border: solid 3px var(--color-primary-dark);
+    margin: 1rem 0;
+    border-radius: 0.2rem;
   }
 
   overflow: scroll;

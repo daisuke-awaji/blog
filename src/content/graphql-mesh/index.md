@@ -1,5 +1,5 @@
 ---
-title: 'GraphQL Mesh は何を解決するのか？ ~ Qiita API を GraphQL でラップして理解する GraphQL Mesh ~'
+title: GraphQL Mesh は何を解決するのか？ 〜 Qiita API を GraphQL でラップして理解する GraphQL Mesh 〜
 date: '2020/03/25'
 tags:
   - 'graphql-mesh'
