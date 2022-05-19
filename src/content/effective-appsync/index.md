@@ -6,7 +6,7 @@ tags:
   - 'Serverless Framework'
 ---
 
-<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/4211b642-0999-a38d-7b99-38b000ab69ee.gif">
+![appsync](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/163591/4211b642-0999-a38d-7b99-38b000ab69ee.gif)
 
 AppSync は AWS が提供するマネージド GraphQL サービスです。Amplify と統合することにより、スキーマさえ宣言すれば GraphQL の Query, Mutation, Subscription コードを自動生成します。バックエンド GraphQL エンドポイントやデータソースを構築し、即座に動く環境が手に入ります。
 
@@ -18,15 +18,13 @@ PoC のように使用する分には Amplify CLI を使用してサクッと開
 
 AppSync の概要について理解している方は、[このあたりから](#appsync-を構築するいくつかの方法)読むとよいかと思います。
 
-なお、サンプルソースは以下のリポジトリにホストしています。Serverless Framework の template として公開していますので、以下コマンドで作成ください。
+なお、サンプルソースは[こちらのリポジトリ](https://github.com/daisuke-awaji/serverless-appsync-offline-typescript-template)にホストしています。Serverless Framework の template として公開していますので、以下コマンドで作成ください。
 
 ```
 $ serverless create \
   --template-url https://github.com/daisuke-awaji/serverless-appsync-offline-typescript-template \
   --path myService
 ```
-
-<a href="https://github.com/daisuke-awaji/serverless-appsync-offline-typescript-template"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/daisuke-awaji/serverless-appsync-offline-typescript-template.png" width="460px"></a>
 
 ## AppSync とは
 
