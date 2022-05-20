@@ -28,10 +28,21 @@ export function getPostSlugs() {
 }
 
 /**
+ * ファイルの最終更新日時
+ * @param path
+ * @returns
+ */
+const getFileUpdateDate = (path: string) => {
+  const stats = fs.statSync(path);
+  return stats.mtime.toISOString().substring(0, 10);
+};
+
+/**
  * 指定したフィールド名から、記事のフィールドの値を取得する
  */
 export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
   const fullPath = path.join(dir, slug, 'index.md');
+
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
@@ -39,7 +50,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     slug: '',
     content: '',
     title: '',
-    date: '',
+    date: getFileUpdateDate(fullPath),
     tags: [],
   };
 
@@ -50,7 +61,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     if (field === 'content') {
       items[field] = content;
     }
-    if (field === 'title' || field === 'date' || field === 'tags') {
+    if (field === 'title' || field === 'tags') {
       items[field] = data[field];
     }
   });
