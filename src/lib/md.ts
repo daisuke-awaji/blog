@@ -94,7 +94,7 @@ export const markdownToHtml = async (markdown: string) => {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkSlug)
-    .use(remarkToc, { heading: '目次', tight: true, prefix: 'user-content-', maxDepth: 2 })
+    .use(remarkToc, { heading: '目次', tight: true, prefix: '', maxDepth: 2 })
     .use(remarkRehype)
     .use(rehypeHighlight)
     .use(rehypeStringify)
