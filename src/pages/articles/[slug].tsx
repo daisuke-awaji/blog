@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Layout from '../../components/layout/Layout';
 import { getAllPosts, getPostBySlug, markdownToHtml } from '../../lib/md';
 import styles from './[slug].module.scss';
+import 'highlight.js/styles/atom-one-dark-reasonable.css';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 

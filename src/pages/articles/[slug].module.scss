@@ -1,8 +1,6 @@
 @import '../../styles/variables.scss';
 
 .titleContainer {
-  // background-color: var(--color-primary);
-  // border-radius: 0.5rem;
   font-size: medium;
 
   p {
@@ -14,7 +12,6 @@
   padding: 1rem;
   border-radius: 0.5rem;
 
-  background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -36,10 +33,15 @@
   h6 {
     text-align: center;
     padding: 1rem 0;
-    font-weight: 400;
+    font-weight: 600;
 
     overflow-wrap: break-word;
 	  word-break: keep-all;
+
+  }
+
+  table {
+    font-size: small;
   }
 
   p,
@@ -53,10 +55,12 @@
   td {
     color: var(--color-primary-dark);
     code {
-      background-color: var(--color-primary-dark);
+      background-color: #282c34;
       border-radius: 0.2rem;
-      padding: 0.3rem 0.3rem 0.1rem 0.3rem;
+      padding: 0.3rem 0.4rem 0.2rem 0.4rem;
       color: white;
+
+      font-size: medium;
     }
     line-height: 1.8rem;
   }
@@ -64,18 +68,15 @@
   img {
     width: 100%;
     border-radius: 0.5rem;
+    padding: 2rem 0;
   }
 
   pre {
-    background-color: var(--color-primary-dark);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    overflow: auto;
-    line-height: 1.3rem;
-    font-size: medium;
-
     code {
-      color: white;
+      border-radius: 0.5rem;
+      overflow: auto;
+      line-height: 1.3rem;
+      font-size: medium;
     }
   }
 

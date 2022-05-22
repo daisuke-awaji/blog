@@ -1,6 +1,5 @@
 ---
 title: Node.js を使用してファイルの更新日を取得する
-date: '2022/05/20'
 tags:
   - 'Node.js'
 ---
