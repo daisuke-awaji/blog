@@ -4,6 +4,7 @@ import Layout from '../../components/layout/Layout';
 import { getAllPosts, getPostBySlug, markdownToHtml } from '../../lib/md';
 import styles from './[slug].module.scss';
 import 'highlight.js/styles/atom-one-dark-reasonable.css';
+import Seo from '../../components/Seo';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -28,7 +29,7 @@ export const getStaticPaths = async () => {
  * 記事の内容を取得する
  */
 export const getStaticProps = async ({ params }: any) => {
-  const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'content']);
+  const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'content', 'img']);
   // Markdown を HTML に変換する
   const content = await markdownToHtml(post.content);
   // content を詰め直して返す
@@ -45,10 +46,14 @@ export const getStaticProps = async ({ params }: any) => {
 const Blog: NextPage<Props> = ({ post }) => {
   return (
     <Layout>
-      <Head>
-        <title>{post.title}</title>
-        <meta name="description" content={post.title} />
-      </Head>
+      <Seo
+        pageTitle={post.title}
+        pageDescription={"G's | " + post.title}
+        pageImg={'https://geeawa.vercel.app' + post?.img ?? '/opg.jpeg'}
+        pageImgWidth={1280}
+        pageImgHeight={960}
+      />
+
       <div className={styles.titleContainer}>
         <h1>{post.title}</h1>
         <p>{post.date}</p>

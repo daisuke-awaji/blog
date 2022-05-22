@@ -2,6 +2,7 @@
 title: Node.js を使用してファイルの更新日を取得する
 tags:
   - 'Node.js'
+img: ''
 ---
 
 # Node.js を使用してファイルの最終更新日を取得する

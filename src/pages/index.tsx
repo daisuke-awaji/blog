@@ -4,6 +4,7 @@ import Layout from '../components/layout/Layout';
 import styles from './Home.module.scss';
 import React from 'react';
 import { LinkCard } from '../components/Card/LinkCard';
+import Seo from '../components/Seo';
 
 const StyledLinkCard = (props: any) => <LinkCard className={styles.centeredCard} {...props} />;
 
@@ -25,10 +26,13 @@ const links = [
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Head>
-        <title>G&apos;s | Home</title>
-        <meta name="description" content="home" />
-      </Head>
+      <Seo
+        pageTitle={"G's | Home"}
+        pageDescription={"G's | Home"}
+        pageImg={'https://geeawa.vercel.app/ogp.jpeg'}
+        pageImgWidth={1280}
+        pageImgHeight={960}
+      />
 
       <h1>Hi there 👋</h1>
 

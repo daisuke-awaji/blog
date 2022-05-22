@@ -18,6 +18,7 @@ type Post = {
   title: string;
   date: string;
   tags: string[];
+  img: string;
 };
 
 const dir = path.join(process.cwd(), 'public/contents');
@@ -57,6 +58,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     title: '',
     date: getFileUpdateDate(fullPath),
     tags: [],
+    img: '',
   };
 
   fields.forEach((field) => {
@@ -66,7 +68,7 @@ export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
     if (field === 'content') {
       items[field] = content;
     }
-    if (field === 'title' || field === 'tags') {
+    if (field === 'title' || field === 'tags' || field === 'img') {
       items[field] = data[field];
     }
   });

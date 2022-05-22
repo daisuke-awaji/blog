@@ -3,6 +3,7 @@ title: 多段 API Gateway 構成における分散トレーシングにおける
 tags:
   - 'APIGateway'
   - 'AWS'
+img: /contents/apigateway-logging-request-id/overview.png
 ---
 
 # 目次
