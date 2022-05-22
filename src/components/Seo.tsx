@@ -30,6 +30,7 @@ const Seo: React.FC<Props> = ({ pageTitle, pageDescription, pagePath, pageImg, p
       <meta property="og:image" content={imgUrl} />
       <meta property="og:image:width" content={String(imgWidth)} />
       <meta property="og:image:height" content={String(imgHeight)} />
+      <meta name="twitter:card" content="summary_large_image" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
         href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap"

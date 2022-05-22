@@ -62,9 +62,7 @@ API Gateway にはリクエストに対して一意のリクエスト ID を割�
 
 ![overview-tracing](/contents/apigateway-logging-request-id/apigateway-logging-overview-tracing-simple.png)
 
-## ② API Gateway の統合リクエストパラメータに リクエスト ID を渡す
-
-先に述べたように、API Gateway の機能において、クライアントからのリクエストを一意に特定するログを生成します。$context.requestId, $context.extendedRequestId 自体は API Gatway の $context 変数でしかありません。まずはこの変数をロググループに書き込みます。
+API Gateway の機能において生成される リクエスト ID をログに記録します。$context.requestId, $context.extendedRequestId 自体は API Gatway の $context 変数でしかありません。まずはこの変数をロググループに書き込みます。
 
 概して CloudWatch Logs のロググループは AWS の各種リソースに対して１体１となるように作ることが推奨されています。これは Infrastructure as Code 管理する前提で、各種リソースのデプロイ容易性を高めることや、検索性を柔軟にすること、また [PutEvents API のクォータ](https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) に配慮することが目的です。
 
@@ -102,6 +100,21 @@ request-id, extended-request-id, ip, caller, user, request-time, http-method, re
 
 ElasticSearch や DataDog のような分散アプリケーションのログトレースを容易にするサービスを使っていたとしても、フォーマットが異なる場合、ログのパース処理が必要となってしまいます。
 分散アプリケーション全体では、**一意なリクエスト ID はプロパティ（キー）を揃え、同じログフォーマットで出力する** と良いでしょう。
+
+## ② API Gateway の統合リクエストパラメータに リクエスト ID を渡す
+
+[Amazon API Gateway API リクエストおよびレスポンスデータマッピングリファレンス](https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/request-response-data-mappings.html) によると、APIGateway から後続のバックエンドサービス（今回は ECS）にリクエストする際にパラメータをマッピングできます。
+
+今回の要件では API Gateway が生成した context.requestId を ECS に渡したいので、ヘッダーに付与してみましょう。
+
+![apigateway-request-mapping](/contents/apigateway-logging-request-id/apigateway-request-mapping.png)
+
+```
+integration.request.header.apiGateway-requestId: context.requestId
+integration.request.header.apiGateway-extendedRequestId: context.extendedRequestId
+```
+
+これによって、ECS に渡される HTTP リクエストのヘッダーにリクエスト ID を含めることができました。
 
 ## ③ ECS アプリケーションにて リクエスト ID をログに出力する
 
