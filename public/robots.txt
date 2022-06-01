@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://geeawa.vercel.app
+
+# Sitemaps
+Sitemap: https://geeawa.vercel.app/sitemap.xml
