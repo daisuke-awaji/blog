@@ -36,6 +36,10 @@ const Seo: React.FC<Props> = ({ pageTitle, pageDescription, pagePath, pageImg, p
         href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap"
         rel="stylesheet"
       />
+      <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>⚡️</text></svg>"
+      ></link>
       <link rel="canonical" href={url} />
     </Head>
   );
