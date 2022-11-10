@@ -14,11 +14,11 @@ const links = [
     title: 'Articles 📕',
   },
   {
-    href: '/profile',
+    href: 'https://github.com/daisuke-awaji',
     title: 'Profile 🧑‍💻',
   },
   {
-    href: '/products',
+    href: 'https://github.com/daisuke-awaji',
     title: 'Products 🔨',
   },
 ];
