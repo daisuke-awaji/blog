@@ -1,9 +1,10 @@
 ---
-title: 多段 API Gateway 構成における分散トレーシングにおける課題を解決し、トレーサビリティを向上させるログ戦略
+title: 多段 API Gateway 構成における分散トレーシングの課題を解決し、トレーサビリティを向上させるログ戦略
 tags:
-  - 'APIGateway'
-  - 'AWS'
+  - "APIGateway"
+  - "AWS"
 img: /contents/apigateway-logging-request-id/overview.png
+date: 2023/02/01
 ---
 
 # 目次
@@ -135,17 +136,17 @@ pino には ログ出力する内容を指定するオプションとして `ser
 **_logger.ts_**
 
 ```ts
-import pino from 'pino';
-import ExpressPinoLogger from 'express-pino-logger';
-import { IncomingMessage } from 'http';
-import { v4 as uuidv4 } from 'uuid';
+import pino from "pino";
+import ExpressPinoLogger from "express-pino-logger";
+import { IncomingMessage } from "http";
+import { v4 as uuidv4 } from "uuid";
 
 export const logger = pino({
-  level: 'info',
+  level: "info",
 });
 
 export const loggingMiddleware = ExpressPinoLogger({
-  level: 'info',
+  level: "info",
   serializers: {
     req: (req) => ({
       ...req,
@@ -153,7 +154,7 @@ export const loggingMiddleware = ExpressPinoLogger({
     }),
   },
   genReqId: (req: IncomingMessage) => {
-    return req.headers['apigateway-request-id'] || uuidv4(); // API Gateway の統合リクエストでマッピングされた値を取得する
+    return req.headers["apigateway-request-id"] || uuidv4(); // API Gateway の統合リクエストでマッピングされた値を取得する
   },
 });
 ```
@@ -163,15 +164,15 @@ express には以下のように組み込みます。
 **_index.ts_**
 
 ```ts
-import express from 'express';
-import { logger, loggingMiddleware } from './logger';
+import express from "express";
+import { logger, loggingMiddleware } from "./logger";
 
 const app = express();
 app.use(loggingMiddleware);
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', (req, res) => {
-  res.send('hello world');
+app.get("/", (req, res) => {
+  res.send("hello world");
 });
 
 const PORT = 8080;
@@ -232,11 +233,11 @@ $ yarn add axios express-http-context
 **_index.ts_**
 
 ```ts
-import express from 'express';
-import { logger, loggingMiddleware } from './logger';
-import context from 'express-http-context';
-import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
+import express from "express";
+import { logger, loggingMiddleware } from "./logger";
+import context from "express-http-context";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 const app = express();
 app.use(loggingMiddleware);
@@ -244,20 +245,20 @@ app.use(context.middleware);
 
 // APIGateway の統合リクエストパラメータにセットされたリクエスト ID を取得する
 const setRequestId = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  context.set('requestId', req.headers['apigateway-request-id'] || uuidv4());
+  context.set("requestId", req.headers["apigateway-request-id"] || uuidv4());
   next();
 };
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', setRequestId, async (req, res) => {
+app.get("/", setRequestId, async (req, res) => {
   // Call api with requestId header
-  await axios.get('https://your.backend.apigateway.domain', {
+  await axios.get("https://your.backend.apigateway.domain", {
     headers: {
-      'x-amazn-RequestId': context.get('requestId'), // Backend で稼働する APIGateway の $context.requestId を上書きする
+      "x-amazn-RequestId": context.get("requestId"), // Backend で稼働する APIGateway の $context.requestId を上書きする
     },
   });
 
-  res.send('hello world');
+  res.send("hello world");
 });
 
 const PORT = 8080;

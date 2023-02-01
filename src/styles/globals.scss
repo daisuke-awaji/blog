@@ -12,7 +12,9 @@ body {
   margin: 0;
   // font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
   //   Helvetica Neue, sans-serif;
-  font-family: Gothic MB101 Light, Hiragino Kaku Gothic W3 JIS2004, 'メイリオ', Meiryo, Verdana, 'ＭＳ Ｐゴシック', sans-serif;
+  font-family: Gothic MB101 Light, Hiragino Kaku Gothic W3 JIS2004, "メイリオ", Meiryo, Verdana, "ＭＳ Ｐゴシック",
+    sans-serif;
+  font-size: large;
 }
 
 a {
@@ -23,4 +25,3 @@ a {
 * {
   box-sizing: border-box;
 }
-

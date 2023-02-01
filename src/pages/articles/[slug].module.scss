@@ -1,7 +1,12 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .titleContainer {
-  font-size: medium;
+  font-size: large;
+
+  @include mq("sm") {
+    font-size: medium;
+    padding: 0 0.5rem;
+  }
 
   p {
     color: var(--color-primary-dark);
@@ -27,17 +32,16 @@
   h4,
   h5,
   h6 {
-    text-align: center;
-    padding: 1rem 0;
-    font-weight: 600;
+    text-align: left;
+    padding: 2.5rem 0;
+    font-weight: 500;
 
     overflow-wrap: break-word;
-	  word-break: keep-all;
-
+    word-break: keep-all;
   }
 
   table {
-    font-size: small;
+    font-size: large;
   }
 
   p,
@@ -55,8 +59,6 @@
       border-radius: 0.2rem;
       padding: 0.3rem 0.4rem 0.2rem 0.4rem;
       color: white;
-
-      font-size: medium;
     }
     line-height: 1.8rem;
   }
@@ -73,7 +75,7 @@
       overflow: auto;
       line-height: 1.3rem;
       font-size: large;
-      letter-spacing: 1.0px;
+      letter-spacing: 1px;
     }
   }
 
@@ -110,7 +112,7 @@
     padding: 0.5rem 1rem 0.5rem 1rem;
   }
 
-  @include mq('md') {
+  @include mq("md") {
     padding: 1px 0.7rem;
   }
 }

@@ -1,16 +1,15 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { unified } from 'unified';
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
-import remarkRehype from 'remark-rehype';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeStringify from 'rehype-stringify';
-import remarkToc from 'remark-toc';
-import remarkSlug from 'remark-slug';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { unified } from "unified";
+import html from "remark-html";
+import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+import remarkToc from "remark-toc";
+import remarkSlug from "remark-slug";
 
 type Post = {
   slug: string;
@@ -21,7 +20,7 @@ type Post = {
   img: string;
 };
 
-const dir = path.join(process.cwd(), 'public/contents');
+const dir = path.join(process.cwd(), "public/contents");
 
 /**
  * postsDirectory 以下のディレクトリ名を取得する
@@ -47,28 +46,28 @@ const getFileUpdateDate = (path: string) => {
  * 指定したフィールド名から、記事のフィールドの値を取得する
  */
 export function getPostBySlug(slug: string, fields: Array<keyof Post> = []) {
-  const fullPath = path.join(dir, slug, 'index.md');
+  const fullPath = path.join(dir, slug, "index.md");
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
   const items: Post = {
-    slug: '',
-    content: '',
-    title: '',
-    date: getFileUpdateDate(fullPath),
+    slug: "",
+    content: "",
+    title: "",
+    date: "",
     tags: [],
-    img: '',
+    img: "",
   };
 
   fields.forEach((field) => {
-    if (field === 'slug') {
+    if (field === "slug") {
       items[field] = slug;
     }
-    if (field === 'content') {
+    if (field === "content") {
       items[field] = content;
     }
-    if (field === 'title' || field === 'tags' || field === 'img') {
+    if (field === "title" || field === "tags" || field === "img" || field === "date") {
       items[field] = data[field];
     }
   });
@@ -96,7 +95,7 @@ export const markdownToHtml = async (markdown: string) => {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkSlug)
-    .use(remarkToc, { heading: '目次', tight: true, prefix: '', maxDepth: 2 })
+    .use(remarkToc, { heading: "目次", tight: true, prefix: "", maxDepth: 2 })
     .use(remarkRehype)
     .use(rehypeHighlight)
     .use(rehypeStringify)
