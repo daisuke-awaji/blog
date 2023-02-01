@@ -1,8 +1,9 @@
 ---
 title: Qiita API を活用して、投稿記事の一覧をブログに表示する
 tags:
-  - 'Qiita'
+  - "Qiita"
 img: /contents/get-qiita-posts-using-api/qiita-logo
+date: 2023/02/01
 ---
 
 # 結論

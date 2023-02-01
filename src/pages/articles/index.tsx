@@ -1,11 +1,11 @@
-import type { InferGetStaticPropsType, NextPage } from 'next';
-import Head from 'next/head';
-import Layout from '../../components/layout/Layout';
-import styles from './articles.module.scss';
-import React from 'react';
-import { LinkCard } from '../../components/Card/LinkCard';
-import { getAllPosts } from '../../lib/md';
-import { getAllPosts as getAllPostsQiita } from '../../lib/qiita';
+import type { InferGetStaticPropsType, NextPage } from "next";
+import Head from "next/head";
+import Layout from "../../components/layout/Layout";
+import styles from "./articles.module.scss";
+import React from "react";
+import { LinkCard } from "../../components/Card/LinkCard";
+import { getAllPosts } from "../../lib/md";
+import { getAllPosts as getAllPostsQiita } from "../../lib/qiita";
 
 const Tag: React.FC<{ tag: string }> = ({ tag }) => {
   return <div className={styles.tag}>{tag}</div>;
@@ -13,7 +13,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['slug', 'title', 'date', 'tags']).map((post) => ({
+  const allPosts = getAllPosts(["slug", "title", "date", "tags"]).map((post) => ({
     ...post,
     url: `/articles/${post.slug}`,
   }));
@@ -36,7 +36,7 @@ type ArticleCardProps = {
 };
 
 const ArticleCard: React.FC<ArticleCardProps> = (post) => {
-  const label = post.label ? <span className={styles.cardLabel + ' ' + styles.qiita}>{post.label}</span> : undefined;
+  const label = post.label ? <span className={styles.cardLabel + " " + styles.qiita}>{post.label}</span> : undefined;
 
   return (
     <LinkCard href={post.url} label={label} key={post.url}>

@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .root {
   background-color: white;
@@ -6,11 +6,14 @@
 
 .header {
   width: 100%;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @include mq("sm") {
+    padding: 0 0.5rem;
+  }
 }
 
 .headerContainer {
@@ -23,8 +26,8 @@
   align-items: center;
   justify-content: space-between;
 
-  @include mq('sm') {
-    padding: 0 1.0rem
+  @include mq("sm") {
+    padding: 0 0.5rem;
   }
 }
 
@@ -34,8 +37,8 @@
   min-height: 100vh;
   margin: auto;
 
-  @include mq('sm') {
-    padding: 0 1.0rem;
+  @include mq("sm") {
+    padding: 0 0.5rem;
   }
 }
 
